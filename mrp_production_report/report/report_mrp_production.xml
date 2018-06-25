@@ -1,0 +1,157 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+	<data>
+		<template id="report_mrp_production_document">
+			<t t-call="report.external_layout">
+				<div class="page">
+					<p><font size="5" style="font-size: 18pt"><b>Orden de Producción N°:</b></font><font size="5" style="font-size: 18pt"><span style="font-weight: normal" t-field="o.name"/></font></p>
+						<p style="margin-bottom: 0.28cm">
+					</p>
+					<p style="margin-bottom: 0.21cm; line-height: 100%"><font size="2" style="font-size: 10pt"><b>Documento de Origen:<span style="font-weight: normal" t-field="o.origin"/></b></font>
+					</p>
+					<p style="margin-bottom: 0.21cm; line-height: 100%"><font size="2" style="font-size: 10pt"><b>Código de Artículo:<span style="font-weight: normal" t-field="o.product_id.default_code"/></b></font>
+					</p>
+					<p style="margin-bottom: 0.21cm; line-height: 100%"><font size="2" style="font-size: 10pt"><b>Descripción: <span style="font-weight: normal" t-field="o.product_id.name"/></b></font></p>
+					<p style="margin-bottom: 0.21cm; line-height: 100%"><font size="2" style="font-size: 10pt"><b>Cantidad Ordenada: <span style="font-weight: normal" t-field="o.product_qty"/>
+						</b></font></p>
+					<!--
+						<p style="margin-bottom: 0.21cm; line-height: 100%"><font size="2" style="font-size: 10pt"><b>Unidad
+							de Medida:</b></font></p> -->
+							<p style="margin-bottom: 0.28cm; line-height: 100%"><b><font size="2" style="font-size: 10pt">Ruta: <span style="font-weight: normal" t-field="o.routing_id"/></font></b></p>
+							<!-- <p style="margin-bottom: 0.28cm; line-height: 100%"><font size="2" style="font-size: 10pt"><b>Centro de Trabajo:</b></font></p> -->
+								<p style="margin-bottom: 0.28cm; line-height: 100%"><font size="2" style="font-size: 10pt"><b>Horas
+									Estimadas de Preparación:</b></font></p>
+									<p style="margin-bottom: 0.28cm; line-height: 100%"><font size="2" style="font-size: 10pt"><b>Horas	Estimadas de Producción:</b></font></p>
+										<p style="margin-bottom: 0.28cm; line-height: 100%"><b><font size="2" style="font-size: 10pt">Lista de Materiales: <span style="font-weight: normal" t-field="o.bom_id"/></font></b></p>
+											<p style="margin-bottom: 0.28cm; line-height: 100%"><br/>
+											<br/>
+
+										</p>
+										<p style="margin-bottom: 0.28cm; line-height: 100%"><font size="2" style="font-size: 10pt"><b>Productos	a Consumir</b></font></p>
+											<table width="100%" cellpadding="4" cellspacing="0">
+												<tr valign="top">
+													<td width="108" style="border-top: 1px solid #000000; border-bottom: 1px solid #000000; border-left: 1px solid #000000; border-right: none; padding-top: 0.1cm; padding-bottom: 0.1cm; padding-left: 0.1cm; padding-right: 0cm">
+														<p>Cód Artículo</p>
+													</td>
+													<td width="417" style="border-top: 1px solid #000000; border-bottom: 1px solid #000000; border-left: 1px solid #000000; border-right: none; padding-top: 0.1cm; padding-bottom: 0.1cm; padding-left: 0.1cm; padding-right: 0cm">
+														<p>Descripción</p>
+													</td>
+													<td width="41" style="border-top: 1px solid #000000; border-bottom: 1px solid #000000; border-left: 1px solid #000000; border-right: none; padding-top: 0.1cm; padding-bottom: 0.1cm; padding-left: 0.1cm; padding-right: 0cm">
+														<p>U.M</p>
+													</td>
+													<td width="149" style="border: 1px solid #000000; padding: 0.1cm">
+														<p>Cantidad</p>
+													</td>
+												</tr>
+												<!--  filas  -->
+												<tr valign="top" t-foreach="o.move_raw_ids" t-as="l">
+													<td width="108" style="border-top: none; border-bottom: 1px solid #000000; border-left: 1px solid #000000; border-right: none; padding-top: 0cm; padding-bottom: 0.1cm; padding-left: 0.1cm; padding-right: 0cm">
+														<p><span t-field="l.product_id.default_code"/><br/></p>
+												    </td>
+												    <td width="317" style="border-top: none; border-bottom: 1px solid #000000; border-left: 1px solid #000000; border-right: none; padding-top: 0cm; padding-bottom: 0.1cm; padding-left: 0.1cm; padding-right: 0cm">
+													    <p><span t-field="l.product_id.name"/><br/></p>
+											        </td>
+											        <td width="41" style="border-top: none; border-bottom: 1px solid #000000; border-left: 1px solid #000000; border-right: none; padding-top: 0cm; padding-bottom: 0.1cm; padding-left: 0.1cm; padding-right: 0cm">
+												        <p>UN<br/></p>
+													</td>
+													<td width="149" style="border-top: none; border-bottom: 1px solid #000000; border-left: 1px solid #000000; border-right: 1px solid #000000; padding-top: 0cm; padding-bottom: 0.1cm; padding-left: 0.1cm; padding-right: 0.1cm">
+													     <p><span t-field="l.product_uom_qty"/><br/></p>
+													</td>
+												</tr>
+							</table>
+							<p style="margin-bottom: 0.28cm; line-height: 100%"><br/>
+							<br/>
+						</p>
+				<table width="100%" cellpadding="5" cellspacing="0">
+					<tr>
+						<td colspan="4" width="100%" height="8" valign="bottom" bgcolor="#ffffff" style="border: 1px solid #00000a; padding: 0cm 0.12cm">
+							<p align="center"><b><font color="#000000"><font face="Calibri, serif">Datos de Producción</font></font></b></p>
+							</td>
+						</tr>
+						<tr valign="bottom">
+							<td width="87" height="18" bgcolor="#ffffff" style="border-top: none; border-bottom: 1px solid #00000a; border-left: 1px solid #00000a; border-right: 1px solid #00000a; padding: 0cm 0.12cm">
+								<p align="left"><font color="#000000"><font face="Calibri, serif">Operario</font></font></p>
+							</td>
+							<td width="241" bgcolor="#ffffff" style="border-top: none; border-bottom: 1px solid #00000a; border-left: none; border-right: 1px solid #00000a; padding-top: 0cm; padding-bottom: 0cm; padding-left: 0cm; padding-right: 0.12cm">
+								<p><br/>
+
+							</p>
+						</td>
+						<td width="103" bgcolor="#ffffff" style="border-top: none; border-bottom: 1px solid #00000a; border-left: none; border-right: 1px solid #00000a; padding-top: 0cm; padding-bottom: 0cm; padding-left: 0cm; padding-right: 0.12cm">
+							<p><font color="#000000"><font face="Calibri, serif">Centro de
+								Trabajo</font></font></p>
+							</td>
+							<td width="197" bgcolor="#ffffff" style="border-top: none; border-bottom: 1px solid #00000a; border-left: none; border-right: 1px solid #00000a; padding-top: 0cm; padding-bottom: 0cm; padding-left: 0cm; padding-right: 0.12cm">
+								<p><br/>
+
+							</p>
+						</td>
+					</tr>
+					<tr valign="bottom">
+						<td width="87" height="18" bgcolor="#ffffff" style="border-top: none; border-bottom: 1px solid #00000a; border-left: 1px solid #00000a; border-right: 1px solid #00000a; padding: 0cm 0.12cm">
+							<p align="left"><font color="#000000"><font face="Calibri, serif">Cantidad
+								Fabricada</font></font></p>
+							</td>
+							<td width="241" bgcolor="#ffffff" style="border-top: none; border-bottom: 1px solid #00000a; border-left: none; border-right: 1px solid #00000a; padding-top: 0cm; padding-bottom: 0cm; padding-left: 0cm; padding-right: 0.12cm">
+								<p><br/>
+
+							</p>
+						</td>
+						<td width="103" bgcolor="#ffffff" style="border-top: none; border-bottom: 1px solid #00000a; border-left: none; border-right: 1px solid #00000a; padding-top: 0cm; padding-bottom: 0cm; padding-left: 0cm; padding-right: 0.12cm">
+							<p><font color="#000000"><font face="Calibri, serif">Horas de
+								Preparación</font></font></p>
+							</td>
+							<td width="197" bgcolor="#ffffff" style="border-top: none; border-bottom: 1px solid #00000a; border-left: none; border-right: 1px solid #00000a; padding-top: 0cm; padding-bottom: 0cm; padding-left: 0cm; padding-right: 0.12cm">
+								<p><br/>
+
+							</p>
+						</td>
+					</tr>
+					<tr valign="bottom">
+						<td width="87" height="17" bgcolor="#ffffff" style="border-top: none; border-bottom: 1px solid #00000a; border-left: 1px solid #00000a; border-right: 1px solid #00000a; padding: 0cm 0.12cm">
+							<p align="left"><font color="#000000"><font face="Calibri, serif">Unidad
+								de Medida</font></font></p>
+							</td>
+							<td width="241" bgcolor="#ffffff" style="border-top: none; border-bottom: 1px solid #00000a; border-left: none; border-right: 1px solid #00000a; padding-top: 0cm; padding-bottom: 0cm; padding-left: 0cm; padding-right: 0.12cm">
+								<p><br/>
+
+							</p>
+						</td>
+						<td width="103" bgcolor="#ffffff" style="border-top: none; border-bottom: 1px solid #00000a; border-left: none; border-right: 1px solid #00000a; padding-top: 0cm; padding-bottom: 0cm; padding-left: 0cm; padding-right: 0.12cm">
+							<p><font color="#000000"><font face="Calibri, serif">Horas de
+								Producción</font></font></p>
+							</td>
+							<td width="197" bgcolor="#ffffff" style="border-top: none; border-bottom: 1px solid #00000a; border-left: none; border-right: 1px solid #00000a; padding-top: 0cm; padding-bottom: 0cm; padding-left: 0cm; padding-right: 0.12cm">
+								<p><br/>
+
+							</p>
+						</td>
+					</tr>
+				</table>
+				<p style="margin-bottom: 0.28cm; line-height: 108%"><br/>
+				<br/>
+
+			</p>
+			<p style="margin-bottom: 0.28cm; line-height: 108%"><br/>
+			<br/>
+
+		</p>
+		<p style="margin-bottom: 0.28cm; line-height: 108%"><br/>
+		<br/>
+
+	</p>
+	<p align="right" style="margin-bottom: 0.28cm; line-height: 108%">__________________</p>
+	<p align="right" style="margin-bottom: 0.28cm; line-height: 108%">Firma
+		Encargado</p>
+	</div>
+</t>
+</template>
+<template id="report_mrp_production">
+	<t t-call="report.html_container">
+		<t t-foreach="docs" t-as="o">
+			<t t-call="mrp_production_report.report_mrp_production_document" />
+		</t>
+	</t>
+</template>
+</data>
+</odoo>

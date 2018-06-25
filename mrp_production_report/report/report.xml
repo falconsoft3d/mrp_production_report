@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+        <!-- Acciones de reporte -->
+        <report
+            id="action_account_mrp_production"
+            model="mrp.production"
+            string="Reporte Producción Base"
+            report_type="qweb-pdf"
+            name="mrp_production_report.report_mrp_production"
+            file="mrp_production_report.report_mrp_production"/>
+
+        <record id="action_account_mrp_production" model="ir.actions.report.xml">
+        </record>
+    </data>
+</odoo>
